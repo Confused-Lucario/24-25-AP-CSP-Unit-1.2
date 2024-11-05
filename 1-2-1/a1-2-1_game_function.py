@@ -18,10 +18,12 @@ font_setup = ("Arial", 20, "normal")
 spot_size = 2
 spot_color = 'pink'
 spot_shape = "turtle"
-timer = 30
+timer = 5
 counter_interval = 1000
 timer_up = False
 score = 0
+leaderboard_file_name = "a122_leaderboard.txt"
+player_name = input("insert your player name?")
 
 # -----initialize the turtles-----
 spot = trtl.Turtle()
@@ -54,6 +56,7 @@ def countdown():
     if timer <= 0:
         counter.write("Time's Up", font=font_setup)
         timer_up = True
+        manage_leaderboard()
     else:
         counter.write("Timer: " + str(timer), font=font_setup)
         timer -= 1
