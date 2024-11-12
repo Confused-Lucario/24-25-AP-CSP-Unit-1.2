@@ -5,7 +5,7 @@
 bronze_score = 15
 silver_score = 20
 gold_score = 25
-
+player_name = input("insert your player name?")
 
 # return names in the leaderboard file
 def get_names(file_name):
@@ -23,29 +23,35 @@ def get_names(file_name):
             leader_name = leader_name + line[index]
             index = index + 1
 
-
         # TODO 2: add the player name to the names list
+        names.append(player_name)
 
     leaderboard_file.close()
 
     #  TODO 6: return the names list in place of the empty list
-    return []
+    return names
 
 
 # return scores from the leaderboard file
-def get_scores(file_name):
+def get_scores(file_name, score=None):
     leaderboard_file = open(file_name, "r")  # be sure you have created this
 
     scores = []
     for line in leaderboard_file:
         leader_score = ""
         index = 0
-
         # TODO 3: use a while loop to index beyond the comma, skipping the player's name
+        while (line[index] != ","):
+            index += 1
 
         # TODO 4: use a while loop to get the score
 
+        while (line[index] != "\n"):
+            score += line[index]
+            print(scores)
+
         # TODO 5: add the player score to the scores list
+        scores.append(score)
 
     leaderboard_file.close()
 

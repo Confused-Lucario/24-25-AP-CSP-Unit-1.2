@@ -22,7 +22,7 @@ counter_interval = 1000
 timer_up = False
 score = 0
 leaderboard_file_name = "a122_leaderboard.txt"
-player_name = input("insert your player name?")
+
 
 # -----initialize the turtles-----
 spot = trtl.Turtle()
@@ -73,7 +73,7 @@ def update_score():
 # what happens when the spot is clicked
 def spot_clicked(x, y):
     global timer_up
-    if (not timer_up):
+    if not timer_up:
         update_score()
         change_position()
     else:
@@ -121,7 +121,7 @@ def manage_leaderboard():
   leader_scores_list = lb.get_scores(leaderboard_file_name)
 
   # show the leaderboard with or without the current player
-  if (len(leader_scores_list) < 5 or score >= leader_scores_list[4]):
+  if len(leader_scores_list) < 5 or score >= leader_scores_list[4]:
     lb.update_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list, player_name, score)
     lb.draw_leaderboard(True, leader_names_list, leader_scores_list, spot, score)
 
