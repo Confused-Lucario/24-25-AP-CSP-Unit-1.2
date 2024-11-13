@@ -23,7 +23,7 @@ counter_interval = 1000
 timer_up = False
 score = 0
 leaderboard_file_name = "a122_leaderboard.txt"
-player_name = input("What is your name?")
+player_name = input("insert your player name?")
 
 # -----initialize the turtles-----
 spot = trtl.Turtle()
@@ -56,6 +56,7 @@ def countdown():
     if timer <= 0:
         counter.write("Time's Up", font=font_setup)
         timer_up = True
+        manage_leaderboard()
     else:
         counter.write("Timer: " + str(timer), font=font_setup)
         timer -= 1
@@ -112,18 +113,20 @@ def start_game():
     spot.onclick(spot_clicked)
     counter.getscreen().ontimer(countdown, counter_interval)
 
-# Add this function to your game code
-# manages the leaderboard for top 5 scorers
 def manage_leaderboard():
+
   global score
   global spot
+
   # get the names and scores from the leaderboard file
   leader_names_list = lb.get_names(leaderboard_file_name)
   leader_scores_list = lb.get_scores(leaderboard_file_name)
+
   # show the leaderboard with or without the current player
   if (len(leader_scores_list) < 5 or score >= leader_scores_list[4]):
     lb.update_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list, player_name, score)
     lb.draw_leaderboard(True, leader_names_list, leader_scores_list, spot, score)
+
   else:
     lb.draw_leaderboard(False, leader_names_list, leader_scores_list, spot, score)
 
@@ -131,5 +134,4 @@ def manage_leaderboard():
 start_game()
 wn = trtl.Screen()
 wn.bgcolor("white smoke")
-wn.mainloop()
 wn.mainloop()
