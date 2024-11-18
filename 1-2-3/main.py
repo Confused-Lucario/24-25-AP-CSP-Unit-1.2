@@ -1,49 +1,57 @@
-#   a123_apple_1.py
+##############################################################################
+#   a123_TR_apple_typing_3.py
+#   Run code in VS Code to be able to access the images.
+#   Example soulution:
+#      Code connects to the image of an apple.
+#      The apple is located on the image of a tree.
+#      The apple does not draw a line as it falls.
+#      When A is pressed, the letter A appears on the apple.
+#      The apple falls to the ground when the A key is pressed.
+#      The apple and letter dissapear after the apple hits the ground.
+##############################################################################
 import turtle as trtl
 
-#-----setup-----
 apple_image = "apple.gif" # Store the file name of your shape
-pear_image = "pear.gif"
-background_image = "background.gif"
-font_setup = ("Arial", 74, "bold")
-
+ground_height = -200
+apple_letter_x_offset = -25
+apple_letter_y_offset = -50
 
 wn = trtl.Screen()
-wn.bgpic(background_image)
 wn.setup(width=1.0, height=1.0)
-wn.addshape(apple_image)
-wn.addshape(pear_image)# Make the screen aware of the new file
+wn.addshape(apple_image) # Make the screen aware of the new file
 
-drawer = trtl.Turtle()
+wn.bgpic("background.gif")
 apple = trtl.Turtle()
-pear = trtl.Turtle()
-apple.speed(1)
-
 apple.penup()
-pear.penup()
+wn.tracer(False)
 
-#-----functions-----
-# given a turtle, set that turtle to be shaped by the image file
+# given a turtle, active_apple, set that turtle to be shaped
+# by the image file
 def draw_apple(active_apple):
   active_apple.shape(apple_image)
+  draw_letter("A", active_apple)
   wn.update()
 
-def draw_pear(active_pear):
-  active_pear.shape(pear_image)
-  wn.update()
+# This function moves the apple to the ground and hides it.
+def drop_apple():
+  wn.tracer(True)
+  apple.goto(apple.xcor(), ground_height)
+  apple.clear()
+  apple.hideturtle()
+  wn.tracer(False)
 
-def apple_fall(active_apple):
-  apple.setheading(270)
-  apple.forward(200)
-  wn.update()
 
-def draw_an_A():
-  drawer.color("blue")
-  drawer.write("A", font=font_setup)
+# letter is of type str
+# active_apple is a turtle
+def draw_letter(letter, active_apple):
+  active_apple.color("white")
+  remember_position = active_apple.position()
+  active_apple.setpos(active_apple.xcor() + apple_letter_x_offset,active_apple.ycor() + apple_letter_y_offset)
+  active_apple.write(letter, font=("Arial", 74, "bold"))
+  active_apple.setpos(remember_position)
 
-#-----function calls-----
 draw_apple(apple)
+wn.onkeypress(drop_apple, "a")
 
-wn.onkeypress(apple_fall, "A")
-wn.listen
-wn.mainloop()
+wn.listen()
+trtl.mainloop()
