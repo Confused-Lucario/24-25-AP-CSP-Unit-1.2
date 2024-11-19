@@ -10,11 +10,13 @@
 #      The apple and letter dissapear after the apple hits the ground.
 ##############################################################################
 import turtle as trtl
+import random as rd
 
 apple_image = "apple.gif" # Store the file name of your shape
 ground_height = -200
 apple_letter_x_offset = -25
 apple_letter_y_offset = -50
+letter = ""
 
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
@@ -27,9 +29,13 @@ wn.tracer(False)
 
 # given a turtle, active_apple, set that turtle to be shaped
 # by the image file
-def draw_apple(active_apple):
-  active_apple.shape(apple_image)
-  draw_letter("A", active_apple)
+def draw_apple(apple):
+  apple.shape(apple_image)
+  global letter
+  letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  apple.goto(rd.randint(-150, 150), rd.randint(0, 100))
+  draw_letter(letter.pop(rd.randint(0, len(letter))), apple)
+  apple.showturtle()
   wn.update()
 
 # This function moves the apple to the ground and hides it.
@@ -39,6 +45,8 @@ def drop_apple():
   apple.clear()
   apple.hideturtle()
   wn.tracer(False)
+  draw_apple(apple)
+  apple.showturtle()
 
 
 # letter is of type str
@@ -49,6 +57,7 @@ def draw_letter(letter, active_apple):
   active_apple.setpos(active_apple.xcor() + apple_letter_x_offset,active_apple.ycor() + apple_letter_y_offset)
   active_apple.write(letter, font=("Arial", 74, "bold"))
   active_apple.setpos(remember_position)
+  wn.update()
 
 draw_apple(apple)
 wn.onkeypress(drop_apple, "a")
