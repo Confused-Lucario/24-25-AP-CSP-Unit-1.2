@@ -30,14 +30,14 @@ wn.tracer(False)
 
 # given a turtle, active_apple, set that turtle to be shaped
 # by the image file
-def draw_apple(apple):
-  apple.shape(apple_image)
+def draw_apple(active_apple):
+  active_apple.shape(apple_image)
   global letters
   letter = letters.pop(len(letters) - 1)
   apple_letters.append(letter)
   apple.goto(rd.randint(-150, 150), rd.randint(0, 100))
   draw_letter(letter, apple)
-  apple.showturtle()
+  active_apple.showturtle()
   wn.update()
 
 # This function moves the apple to the ground and hides it.
@@ -182,7 +182,7 @@ wn.onkeypress(check_apple_l, "l")
 wn.onkeypress(check_apple_m, "m")
 wn.onkeypress(check_apple_n, "n")
 wn.onkeypress(check_apple_o, "o")
-wn.onkeypress(check_apple_o, "p")
+wn.onkeypress(check_apple_p, "p")
 wn.onkeypress(check_apple_q, "q")
 wn.onkeypress(check_apple_r, "r")
 wn.onkeypress(check_apple_s, "s")
