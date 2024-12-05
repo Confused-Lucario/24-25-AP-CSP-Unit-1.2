@@ -20,6 +20,8 @@ maze_painter.speed(0)
 # Increment Length
 # Repeat
 def draw_barrier():
+    barrier = rd.randint(path_width * 2, length - path_width)
+    maze_painter.forward(barrier - barrier)
     maze_painter.right(90)
     maze_painter.forward(path_width)
     maze_painter.backward(path_width)
@@ -27,24 +29,22 @@ def draw_barrier():
 
 
 for wall in range(21):
-    door = rd.randint(path_width * 2, (length - path_width * 2))
-    barrier = rd.randint(path_width * 2, (length - path_width * 2))
-    if door > barrier:
-        maze_painter.forward(length/3)
-        maze_painter.penup()
-        maze_painter.forward(path_width)
-        maze_painter.pendown()
-    else:
-        draw_barrier()
-        maze_painter.forward(length - path_width - (length / 3))
-        maze_painter.left(90)
+    door = rd.randint(path_width * 2, length + (path_width * 2))
+    maze_painter.forward(length/3)
+    maze_painter.penup()
+    maze_painter.forward(path_width)
+    maze_painter.pendown()
     if wall > 5:
         draw_barrier()
+
+    maze_painter.forward(length - path_width - (length / 3))
+    maze_painter.left(90)
     length += 15
 
 
 
 
+barrier = rd.randint(path_width * 2, (length - path_width * 2))
 
 
 
