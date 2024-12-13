@@ -13,7 +13,7 @@ import time as tm
 
 
 # explain the game ask for player 1 and player 2 names
-print("Welcome to Pong, by Philp Birland and Brandon Howland")
+print("Welcome to Pong, by Philip Birkland and Brandon Howland")
 tm.sleep(2)
 print("The controls for player 1 are (W Key) and (S Key)" + "\n" + "The controls for player 2 are (Arrow Key Up) and (Arrow Key Down)")
 tm.sleep(3)
@@ -28,9 +28,9 @@ tm.sleep(5)
 # Initialize Variables
 wn = trtl.Screen()
     # moves window to top of screen after screen initializes and focuses screen
-rootwindow = wn.getcanvas().winfo_toplevel()
-rootwindow.call('wm', 'attributes', '.', '-topmost', '1')
-rootwindow.call('wm', 'attributes', '.', '-topmost', '0')
+root_window = wn.getcanvas().winfo_toplevel()
+root_window.call('wm', 'attributes', '.', '-topmost', '1')
+root_window.call('wm', 'attributes', '.', '-topmost', '0')
 tm.sleep(2)
 wn.update()
 game_wall = trtl.Turtle()
@@ -52,11 +52,11 @@ player_width = 20
 player_speed = 6
     # font setup
 text_font = ("Arial", 20, "normal")
-    # list of player's scores and ammount needed to score to win
+    # list of player's scores and amount needed to score to win
 scores = [0,0]
 win_score = 5
 
-# Setup Turtle paramaters
+# Setup Turtle parameters
 wn.screensize(game_width + 200, game_height + 200)
 wn.bgcolor('black')
     # player 1 setup code
