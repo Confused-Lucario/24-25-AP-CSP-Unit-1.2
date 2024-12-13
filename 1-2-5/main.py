@@ -176,6 +176,7 @@ def key_press(key):
 def key_release(key):
     key_states[key] = False
 
+# function that increments scores, checks if someone won, and resets play field
 def goal_scored():
     global ball_speed
     global scores
