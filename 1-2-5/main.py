@@ -44,7 +44,8 @@ game_width = 700
 game_height = 400
     # changes the ball size and speed
 ball_size = 10
-ball_speed = 3
+ball_store_speed = 5
+ball_speed = ball_store_speed
     # changes the thickness of the walls
 game_wall_pen_size = 5
     # changes the size of the player bars and the amount they move
@@ -178,8 +179,7 @@ def key_release(key):
 
 # function that increments scores, checks if someone won, and resets play field
 def goal_scored():
-    global ball_speed
-    global scores
+    global ball_speed, scores
     if ball.xcor()>0:
         scores[0] += 1
     elif ball.xcor()<0:
@@ -188,7 +188,7 @@ def goal_scored():
     player1_score.write(str(player1_name) + ": " + str(scores[0]), align='center', font=text_font)
     player2_score.clear()
     player2_score.write(str(player2_name) + ": " + str(scores[1]), align='center', font=text_font)
-    ball_speed = 2
+    ball_speed = 5
     if scores[0] == win_score:
         ball.hideturtle()
         ball.goto(0,0)
