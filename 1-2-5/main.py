@@ -14,16 +14,16 @@ import time as tm
 
 # explain the game ask for player 1 and player 2 names
 print("Welcome to Pong, by Philip Birkland and Brandon Howland")
-tm.sleep(2)
+tm.sleep(1)
 print("The controls for player 1 are (W Key) and (S Key)" + "\n" + "The controls for player 2 are (Arrow Key Up) and (Arrow Key Down)")
-tm.sleep(3)
+tm.sleep(1)
 print("every bounce on your player speeds up the ball")
 print("to win the game one side has to score 5 points")
-tm.sleep(3)
+tm.sleep(1)
 player1_name = input("Please enter player 1 (left) name: ")
 player2_name = input("Please enter player 2 (right) name: ")
-print("the game will appear in 5 seconds, click on the window that opens")
-tm.sleep(5)
+print("the game will appear in 3 seconds, click on the window that opens")
+tm.sleep(3)
 
 # Initialize Variables
 wn = trtl.Screen()
@@ -39,21 +39,21 @@ player2 = trtl.Turtle()
 ball = trtl.Turtle()
 player1_score = trtl.Turtle()
 player2_score = trtl.Turtle()
-    # changes the play area size
+    # changes the play area size, the usual size is 700,400
 game_width = 700
 game_height = 400
-    # changes the ball size and speed
+    # changes the ball size and speed. the usual is 10, 5
 ball_size = 10
 ball_store_speed = 5
 ball_speed = ball_store_speed
-    # changes the thickness of the walls
+    # changes the thickness of the walls, the usual is 5
 game_wall_pen_size = 5
-    # changes the size of the player bars and the amount they move
+    # changes the size of the player bars and the amount they move, the usual is 20, 6
 player_width = 20
 player_speed = 6
     # font setup
 text_font = ("Arial", 20, "normal")
-    # list of player's scores and amount needed to score to win
+    # list of player's scores and amount needed to score to win, the usual is 5 scores to win
 scores = [0,0]
 win_score = 5
 
