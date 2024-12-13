@@ -22,10 +22,17 @@ print("to win the game one side has to score 5 points")
 tm.sleep(3)
 player1_name = input("Please enter player 1 (left) name: ")
 player2_name = input("Please enter player 2 (right) name: ")
-print("the turtle screen is behind his window")
+print("the game will appear in 5 seconds, click on the window that opens")
+tm.sleep(5)
 
 # Initialize Variables
 wn = trtl.Screen()
+    # moves window to top of screen after screen initializes and focuses screen
+rootwindow = wn.getcanvas().winfo_toplevel()
+rootwindow.call('wm', 'attributes', '.', '-topmost', '1')
+rootwindow.call('wm', 'attributes', '.', '-topmost', '0')
+tm.sleep(2)
+wn.update()
 game_wall = trtl.Turtle()
 player1 = trtl.Turtle()
 player2 = trtl.Turtle()
@@ -42,7 +49,7 @@ ball_speed = 3
 game_wall_pen_size = 5
     # changes the size of the player bars and the amount they move
 player_width = 20
-player_speed = 5
+player_speed = 6
     # font setup
 text_font = ("Arial", 20, "normal")
     # list of player's scores and ammount needed to score to win
@@ -260,4 +267,5 @@ wn.update()
 start_game()
 tm.sleep(1)
 main_loop()
+
 wn.mainloop()
