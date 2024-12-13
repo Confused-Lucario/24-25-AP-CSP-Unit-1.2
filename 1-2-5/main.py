@@ -49,7 +49,7 @@ text_font = ("Arial", 20, "normal")
 scores = [0,0]
 win_score = 5
 
-# Setup Turtle
+# Setup Turtle paramaters
 wn.screensize(game_width + 200, game_height + 200)
 wn.bgcolor('black')
     # player 1 setup code
